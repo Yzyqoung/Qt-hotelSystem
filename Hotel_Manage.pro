@@ -26,12 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    LOG_CONFIG/log.cpp
+    LOG_CONFIG/log.cpp \
+    login.cpp \
+    homepage.cpp
 
 HEADERS += \
         mainwindow.h \
     SQL_CONFIG/sql_connect.h \
-    LOG_CONFIG/log.h
+    LOG_CONFIG/log.h \
+    login.h \
+    homepage.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    login.ui \
+    homepage.ui
