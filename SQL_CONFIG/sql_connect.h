@@ -17,7 +17,7 @@
  *函数功能：创建数据表并链接
  *说明：此函数可以进行链接数据库，若链接不上，给出最后的错误提示
 */
-static bool createConnection()
+static bool sql_init()
 {
     //QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
 
@@ -42,7 +42,7 @@ static bool createConnection()
 /*
  *函数功能：断开数据库链接
 */
-static bool closeConnection()
+static bool sql_close()
 {
     QSqlDatabase::database().close();
     return 1;

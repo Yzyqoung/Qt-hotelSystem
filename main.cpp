@@ -6,10 +6,13 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    if(createConnection());
+    //数据库初始化
+    sql_init();
+
+    //日志初始化
     logSysInit("log.txt");
-    //打印日志到文件中
-    qDebug("This is a debug message");
+
+
     w.show();
     return a.exec();
 }
