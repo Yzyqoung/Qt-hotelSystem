@@ -6,11 +6,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Login l;
 //    if(createConnection());
-    logSysInit("log.txt");
+    //logSysInit("log.txt");
     //打印日志到文件中
     qDebug("This is a debug message");
+    Login l;
     l.show();
     return a.exec();
 }
