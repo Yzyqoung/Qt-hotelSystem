@@ -12,7 +12,7 @@
 
 #include <QSqlDatabase>
 #include <QSqlError>
-
+#include <QDebug>
 /*
  *函数功能：创建数据表并链接
  *说明：此函数可以进行链接数据库，若链接不上，给出最后的错误提示
@@ -36,6 +36,7 @@ static bool sql_init()
                   qt_error_string().toLocal8Bit().data());
         return false;
     }
+    qDebug()<<"Open database success!";
     return true;
 }
 
@@ -44,7 +45,9 @@ static bool sql_init()
 */
 static bool sql_close()
 {
+    Q_UNUSED(sql_close())
     QSqlDatabase::database().close();
+    qDebug()<<"close database!";
     return 1;
 }
 

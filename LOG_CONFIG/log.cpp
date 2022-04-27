@@ -1,8 +1,8 @@
 #include "log.h"
-
+#include <QDebug>
 QFile *gFileLog = NULL;
 
-char *msgHead[]={
+char const *msgHead[]={
     "Debug   ",
     "Warning ",
     "Critical",
@@ -12,6 +12,7 @@ char *msgHead[]={
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
+    Q_UNUSED(context);
     QByteArray localMsg = msg.toLocal8Bit();
     QString current_date_time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
 
@@ -30,8 +31,10 @@ void logSysInit(QString filePath)
 {
     gFileLog = new QFile(filePath);
     if (!gFileLog->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)){
+        qDebug()<<"logInit Initialization failure!";
         return;
     }
     //初始化自定义日志处理函数myMessageOutput
     qInstallMessageHandler(myMessageOutput);
+    qDebug()<<"logInit Initialization success!";
 }
