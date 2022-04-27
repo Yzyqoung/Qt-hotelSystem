@@ -41,3 +41,6 @@ FORMS += \
         mainwindow.ui \
     login.ui \
     homepage.ui
+
+RESOURCES += \
+    images.qrc
