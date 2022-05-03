@@ -45,3 +45,6 @@ FORMS += \
     frmdbpage.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    images.qrc
