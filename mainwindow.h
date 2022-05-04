@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btn_allorder_clicked();
 
+    void on_btnMenu_Close_clicked();
+
 private:
     Ui::MainWindow *ui;
     frmDbPage *fDP;

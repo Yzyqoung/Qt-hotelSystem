@@ -638,6 +638,9 @@
                 <bold>false</bold>
                </font>
               </property>
+              <property name="cursor">
+               <cursorShape>OpenHandCursor</cursorShape>
+              </property>
               <property name="text">
                <string>所有账单</string>
               </property>
@@ -882,7 +885,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_worklog">
+             <widget class="QPushButton" name="btn_register">
               <property name="minimumSize">
                <size>
                 <width>0</width>
@@ -902,7 +905,7 @@
                <string>操作日志</string>
               </property>
               <property name="text">
-               <string>上班打卡</string>
+               <string>员工注册</string>
               </property>
              </widget>
             </item>
