@@ -16,8 +16,10 @@ int main(int argc, char *argv[])
     sql_init();
 
 
-    MainWindow mainwindow;
-    mainwindow.show();
+//    MainWindow mainwindow;
+//    mainwindow.show();
 
+    Login login;
+    login.show();
     return a.exec();
 }

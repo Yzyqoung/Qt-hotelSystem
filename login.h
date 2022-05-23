@@ -12,6 +12,7 @@
 #include <QStackedWidget>
 #include <QSqlTableModel>
 #include "mainwindow.h"
+#include "saveloginuser.h"
 
 namespace Ui {
 class Login;

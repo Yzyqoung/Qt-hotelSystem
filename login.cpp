@@ -41,7 +41,8 @@ void Login::saveLoginUser(QString user_num)
         QString value1 = query.value(usernum).toString();
         QString value2 = query.value(username).toString();
         QString value3 = query.value(usertype).toString();
-        //save.setUserFormation(value1,value2,value3);
+        SaveLoginUser save;
+        save.setUserFormation(value1,value2,value3);
     }
 }
 
