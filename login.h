@@ -11,9 +11,7 @@
 #include <QMessageBox>
 #include <QStackedWidget>
 #include <QSqlTableModel>
-#include "SQL_CONFIG/sql_connect.h"
 #include "mainwindow.h"
-#include "saveloginuser.h"
 
 namespace Ui {
 class Login;

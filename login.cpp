@@ -1,12 +1,9 @@
 /*登录界面*/
 #include "login.h"
 #include "ui_login.h"
-#include "saveloginuser.h"
 #include <QSqlRecord>
 #include <QPainter>
 #include <QMouseEvent>
-#include <QDialog>
-#include <QDebug>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -31,7 +28,7 @@ Login::~Login()
 void Login::saveLoginUser(QString user_num)
 {
     QSqlQuery query;
-    SaveLoginUser save;
+    //SaveLoginUser save;
     query.prepare("select * from user where user_num = :user_num");
     query.bindValue(":user_num",user_num);
     query.exec();
@@ -44,7 +41,7 @@ void Login::saveLoginUser(QString user_num)
         QString value1 = query.value(usernum).toString();
         QString value2 = query.value(username).toString();
         QString value3 = query.value(usertype).toString();
-        save.setUserFormation(value1,value2,value3);
+        //save.setUserFormation(value1,value2,value3);
     }
 }
 

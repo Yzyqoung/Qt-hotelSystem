@@ -19,17 +19,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-namespace Ui {
-class MainWindow;
-}
-
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
-
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
     void initwidget();
 private slots:
     void on_btn_allorder_clicked();
@@ -47,8 +36,6 @@ private slots:
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
-private:
-    Ui::MainWindow *ui;
 private:
     Ui::MainWindow *ui;
     frmDbPage *fDP;
