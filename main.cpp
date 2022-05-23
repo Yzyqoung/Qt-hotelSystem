@@ -3,7 +3,11 @@
 #include "./SQL_CONFIG/sql_connect.h"
 #include "./LOG_CONFIG/log.h"
 #include "login.h"
+<<<<<<< .mine
 #include "customerinfo.h"
+=======
+#include "accountauthorization.h"
+>>>>>>> .theirs
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -16,8 +20,20 @@ int main(int argc, char *argv[])
     //数据库初始化
     sql_init();
 
-    MainWindow mainwindow;
-    mainwindow.show();
+    main.show();>>>>>>> .theirs
 
+<<<<<<< .mine
+    Login l;
+    l.show();
+//    AccountAuthorization account;
+//    account.show();
+    //w.show();
+=======
+
+
+
+
+
+>>>>>>> .theirs
     return a.exec();
 }

@@ -26,10 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+
     LOG_CONFIG/log.cpp \
     login.cpp \
     dbpage.cpp \
     frmdbpage.cpp \
+    accountauthorization.cpp \
+    saveloginuser.cpp
     unpayfrmdbpage.cpp \
     payfrmdbpage.cpp \
     customerinfo.cpp \
@@ -41,17 +44,19 @@ HEADERS += \
     LOG_CONFIG/log.h \
     login.h \
     dbpage.h \
-    frmdbpage.h \
+    frmdbpage.h
     unpayfrmdbpage.h \
+    accountauthorization.h \
     payfrmdbpage.h \
+    saveloginuser.h
     customerinfo.h \
     backupssql.h
-
 FORMS += \
         mainwindow.ui \
     login.ui \
-    frmdbpage.ui \
+    frmdbpage.ui\
     unpayfrmdbpage.ui \
+    accountauthorization.ui
     payfrmdbpage.ui \
     customerinfo.ui \
     backupssql.ui
