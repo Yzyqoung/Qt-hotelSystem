@@ -1,66 +1,52 @@
-﻿/***************************************************************
- *文件名称：订单查询功能
- *简要描述：包含所有订单信息的界面，以及关于订单的所有操作。
+/***************************************************************
+ *文件名称：用户信息表
+ *简要描述：
  *
  *当前版本：V1.0
  *作者：Young
- *创作日期：2022/4/26
+ *创作日期：2022/5/7
  *说明：Email:578706463@qq.com
 *****************************************************************/
-#include "frmdbpage.h"
-#include "ui_frmdbpage.h"
-#include "dbpage.h"
-#include <QDate>
-#include <QSqlQuery>
-#include <QMessageBox>
-frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
+#include "customerinfo.h"
+#include "ui_customerinfo.h"
+
+customerinfo::customerinfo(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::customerinfo)
 {
     ui->setupUi(this);
 
-    this->initBox();
     this->initForm();
     this->initView();
 
 }
 
-frmDbPage::~frmDbPage()
+customerinfo::~customerinfo()
 {
     delete ui;
 }
 
-void frmDbPage::initBox(){
-    ui->stackedWidget->setCurrentIndex(0);
-    ui->dateStart->setDate(QDate::currentDate());
-    ui->dateEnd->setDate(QDate::currentDate());
-}
-
-void frmDbPage::initForm()
+void customerinfo::initForm()
 {
     columnNames.clear();
     columnWidths.clear();
 
-    tableName = "hotel.order";
-    countName = "id";
+    tableName = "hotel.customer";
+    countName = "name";
 
-    columnNames.append("订单号码");
     columnNames.append("客户姓名");
+    columnNames.append("性别");
     columnNames.append("身份证号");
     columnNames.append("手机号码");
-    columnNames.append("房间号码");
-    columnNames.append("入住时间");
-    columnNames.append("退房时间");
-    columnNames.append("消费金额");
-    columnNames.append("操作人员");
+    columnNames.append("VIP开通时间");
+    columnNames.append("入住次数");
     columnNames.append("备注");
 
     columnWidths.append(80);
-    columnWidths.append(80);
-    columnWidths.append(120);
-    columnWidths.append(80);
-    columnWidths.append(80);
+    columnWidths.append(40);
     columnWidths.append(120);
     columnWidths.append(120);
-    columnWidths.append(80);
+    columnWidths.append(120);
     columnWidths.append(80);
     columnWidths.append(120);
 
@@ -74,7 +60,7 @@ void frmDbPage::initForm()
     ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
 }
 
-void frmDbPage::initView(){
+void customerinfo::initView(){
     //绑定数据到表格
     QString sql = "where 1=1";
     dbPage->setConnName("hotel");
@@ -87,56 +73,18 @@ void frmDbPage::initView(){
     dbPage->select();
 }
 
-void frmDbPage::on_btnSelect_clicked()
+void customerinfo::on_btnSelect_clicked()
 {
-    if(ui->stackedWidget->currentIndex()==0)//时间查询
-    {
-        QString startdate = ui->dateStart->date().toString("yyyy-MM-dd");
-        QString enddate = ui->dateEnd->date().toString("yyyy-MM-dd");
-
-        QString sql = QString("where inroom_time >= '%1' and outroom_time <= DATE_ADD('%2',INTERVAL 1 day)").arg(startdate).arg(enddate);
-        qDebug()<<sql;
-        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
-        dbPage->setWhereSql(sql);
-        dbPage->setRecordsPerpage(20);
-        dbPage->select();
-    }
-    else if(ui->stackedWidget->currentIndex()==1)//客户查询
-    {
-        QString customer_name = ui->edit_customer->text();
+        QString customer_name = ui->edit_name->text();
         QString sql = QString("where name = '%1'").arg(customer_name);
         qDebug()<<sql;
         dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
         dbPage->setWhereSql(sql);
         dbPage->setRecordsPerpage(20);
         dbPage->select();
-    }
-    else if(ui->stackedWidget->currentIndex()==2)//价格查询
-    {
-        QString price1 = ui->edit_price1->text();
-        QString price2 = ui->edit_price2->text();
-
-        QString sql = QString("where pay between '%1' and '%2'").arg(price1).arg(price2);
-        qDebug()<<sql;
-        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
-        dbPage->setWhereSql(sql);
-        dbPage->setRecordsPerpage(20);
-        dbPage->select();
-    }
-    else if(ui->stackedWidget->currentIndex()==3)//员工查询
-    {
-        QString staff_name = ui->edit_staff->text();
-
-        QString sql = QString("where operator = '%1'").arg(staff_name);
-        qDebug()<<sql;
-        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
-        dbPage->setWhereSql(sql);
-        dbPage->setRecordsPerpage(20);
-        dbPage->select();
-    }
 }
 
-void frmDbPage::on_btnExcel_clicked()
+void customerinfo::on_btnExcel_clicked()
 {
 
         QString filepath = QFileDialog::getSaveFileName(this, tr("Save as..."),
@@ -184,27 +132,7 @@ void frmDbPage::on_btnExcel_clicked()
 
 }
 
-void frmDbPage::on_btn_time_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
-void frmDbPage::on_btn_customer_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
-void frmDbPage::on_btn_price_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
-void frmDbPage::on_btn_staff_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(3);
-}
-
-void frmDbPage::on_btnDelete_clicked()
+void customerinfo::on_btnDelete_clicked()
 {
     QSqlQuery query(QSqlDatabase::database("hotel"));
     query.exec("select user_type from user");
@@ -245,7 +173,7 @@ void frmDbPage::on_btnDelete_clicked()
     }
 }
 
-void frmDbPage::on_btnback_clicked()
+void customerinfo::on_btn_back_clicked()
 {
-        this->initView();
+     this->initView();
 }

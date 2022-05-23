@@ -1,19 +1,18 @@
-﻿/***************************************************************
- *文件名称：订单查询功能
- *简要描述：包含所有订单信息的界面，以及关于订单的所有操作。
+/***************************************************************
+ *文件名称：未支付订单界面
+ *简要描述：
  *
  *当前版本：V1.0
  *作者：Young
- *创作日期：2022/4/26
+ *创作日期：2022/5/5
  *说明：Email:578706463@qq.com
 *****************************************************************/
-#include "frmdbpage.h"
-#include "ui_frmdbpage.h"
-#include "dbpage.h"
-#include <QDate>
-#include <QSqlQuery>
-#include <QMessageBox>
-frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
+#include "unpayfrmdbpage.h"
+#include "ui_unpayfrmdbpage.h"
+
+unpayfrmdbpage::unpayfrmdbpage(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::unpayfrmdbpage)
 {
     ui->setupUi(this);
 
@@ -23,18 +22,18 @@ frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
 
 }
 
-frmDbPage::~frmDbPage()
+unpayfrmdbpage::~unpayfrmdbpage()
 {
     delete ui;
 }
 
-void frmDbPage::initBox(){
+void unpayfrmdbpage::initBox(){
     ui->stackedWidget->setCurrentIndex(0);
     ui->dateStart->setDate(QDate::currentDate());
     ui->dateEnd->setDate(QDate::currentDate());
 }
 
-void frmDbPage::initForm()
+void unpayfrmdbpage::initForm()
 {
     columnNames.clear();
     columnWidths.clear();
@@ -74,9 +73,9 @@ void frmDbPage::initForm()
     ui->tableMain->verticalHeader()->setDefaultSectionSize(25);
 }
 
-void frmDbPage::initView(){
+void unpayfrmdbpage::initView(){
     //绑定数据到表格
-    QString sql = "where 1=1";
+    QString sql = "where pay is null";
     dbPage->setConnName("hotel");
     dbPage->setTableName(tableName);
     dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
@@ -87,14 +86,14 @@ void frmDbPage::initView(){
     dbPage->select();
 }
 
-void frmDbPage::on_btnSelect_clicked()
+void unpayfrmdbpage::on_btnSelect_clicked()
 {
     if(ui->stackedWidget->currentIndex()==0)//时间查询
     {
         QString startdate = ui->dateStart->date().toString("yyyy-MM-dd");
         QString enddate = ui->dateEnd->date().toString("yyyy-MM-dd");
 
-        QString sql = QString("where inroom_time >= '%1' and outroom_time <= DATE_ADD('%2',INTERVAL 1 day)").arg(startdate).arg(enddate);
+        QString sql = QString("where inroom_time >= '%1' and outroom_time <= DATE_ADD('%2',INTERVAL 1 day) and pay is null").arg(startdate).arg(enddate);
         qDebug()<<sql;
         dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
         dbPage->setWhereSql(sql);
@@ -104,7 +103,7 @@ void frmDbPage::on_btnSelect_clicked()
     else if(ui->stackedWidget->currentIndex()==1)//客户查询
     {
         QString customer_name = ui->edit_customer->text();
-        QString sql = QString("where name = '%1'").arg(customer_name);
+        QString sql = QString("where name = '%1' and pay is null").arg(customer_name);
         qDebug()<<sql;
         dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
         dbPage->setWhereSql(sql);
@@ -127,7 +126,7 @@ void frmDbPage::on_btnSelect_clicked()
     {
         QString staff_name = ui->edit_staff->text();
 
-        QString sql = QString("where operator = '%1'").arg(staff_name);
+        QString sql = QString("where operator = '%1' and pay is null").arg(staff_name);
         qDebug()<<sql;
         dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
         dbPage->setWhereSql(sql);
@@ -136,7 +135,7 @@ void frmDbPage::on_btnSelect_clicked()
     }
 }
 
-void frmDbPage::on_btnExcel_clicked()
+void unpayfrmdbpage::on_btnExcel_clicked()
 {
 
         QString filepath = QFileDialog::getSaveFileName(this, tr("Save as..."),
@@ -184,27 +183,27 @@ void frmDbPage::on_btnExcel_clicked()
 
 }
 
-void frmDbPage::on_btn_time_clicked()
+void unpayfrmdbpage::on_btn_time_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-void frmDbPage::on_btn_customer_clicked()
+void unpayfrmdbpage::on_btn_customer_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void frmDbPage::on_btn_price_clicked()
+void unpayfrmdbpage::on_btn_price_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
 
-void frmDbPage::on_btn_staff_clicked()
+void unpayfrmdbpage::on_btn_staff_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
 }
 
-void frmDbPage::on_btnDelete_clicked()
+void unpayfrmdbpage::on_btnDelete_clicked()
 {
     QSqlQuery query(QSqlDatabase::database("hotel"));
     query.exec("select user_type from user");
@@ -245,7 +244,8 @@ void frmDbPage::on_btnDelete_clicked()
     }
 }
 
-void frmDbPage::on_btnback_clicked()
+
+void unpayfrmdbpage::on_btnBack_clicked()
 {
-        this->initView();
+    this->initView();
 }

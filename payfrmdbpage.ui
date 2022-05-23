@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>frmDbPage</class>
- <widget class="QWidget" name="frmDbPage">
+ <class>payfrmdbpage</class>
+ <widget class="QWidget" name="payfrmdbpage">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1080</width>
+    <height>709</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -336,7 +336,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="btnback">
+       <widget class="QPushButton" name="btnBack">
         <property name="text">
          <string>重置</string>
         </property>

@@ -29,7 +29,11 @@ SOURCES += \
     LOG_CONFIG/log.cpp \
     login.cpp \
     dbpage.cpp \
-    frmdbpage.cpp
+    frmdbpage.cpp \
+    unpayfrmdbpage.cpp \
+    payfrmdbpage.cpp \
+    customerinfo.cpp \
+    backupssql.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -37,12 +41,20 @@ HEADERS += \
     LOG_CONFIG/log.h \
     login.h \
     dbpage.h \
-    frmdbpage.h
+    frmdbpage.h \
+    unpayfrmdbpage.h \
+    payfrmdbpage.h \
+    customerinfo.h \
+    backupssql.h
 
 FORMS += \
         mainwindow.ui \
     login.ui \
-    frmdbpage.ui
+    frmdbpage.ui \
+    unpayfrmdbpage.ui \
+    payfrmdbpage.ui \
+    customerinfo.ui \
+    backupssql.ui
 
 DISTFILES +=
 

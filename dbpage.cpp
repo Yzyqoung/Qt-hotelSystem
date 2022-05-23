@@ -1,4 +1,13 @@
-﻿#include "dbpage.h"
+﻿/***************************************************************
+ *文件名称：数据库分页查询
+ *简要描述：采取子线程方式操作数据库数据，防止系统卡死
+ *
+ *当前版本：V1.0
+ *作者：Young
+ *创作日期：2022/4/26
+ *说明：Email:578706463@qq.com
+*****************************************************************/
+#include "dbpage.h"
 #include "QDebug"
 SqlQueryModel::SqlQueryModel(QObject *parent) : QSqlQueryModel(parent)
 {
