@@ -27,20 +27,20 @@ public:
     explicit Login(QWidget *parent = 0);
     ~Login();
 
-    //淇濆瓨褰撳墠鐨勭敤鎴峰拰瀵嗙爜
+    //保存当前的用户和密码
     void WriteCurrentUser(QString username,QString userpwd );
 
-    //妫�鏌ヨ〃鏄湁鍐呭
+    //检查表是有内容
     int FindTableIsEmpty(QString tablename);
 
-    //鍒犻櫎琛ㄤ腑鍐呭
+    //删除表中内容
     void DeleteTableContent(QString tablename);
 
     void saveLoginUser(QString user_num);
 
 protected:
-    void mouseMoveEvent(QMouseEvent *e);//榧犳爣绉诲姩
-    void mousePressEvent(QMouseEvent *e);//榧犳爣鎸変笅绉诲姩
+    void mouseMoveEvent(QMouseEvent *e);//鼠标移动
+    void mousePressEvent(QMouseEvent *e);//鼠标按下移动
 private slots:
     void on_btnLogin_clicked();
 

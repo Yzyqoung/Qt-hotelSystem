@@ -1,5 +1,16 @@
+<<<<<<< .mine
 <RCC>
     <qresource prefix="/">
-        <file>Images/LoginBackground.jpg</file>
+=======
+<RCC>
+    <qresource prefix="/">
+>>>>>>> .theirs
+        <file>images/LoginBackground.jpg</file>
+        <file>images/home/back.jpg</file>
+<<<<<<< .mine
     </qresource>
 </RCC>
+=======
+    </qresource>
+</RCC>
+>>>>>>> .theirs

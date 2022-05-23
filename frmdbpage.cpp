@@ -2,6 +2,8 @@
 #include "ui_frmdbpage.h"
 #include "dbpage.h"
 #include <QDate>
+#include <QSqlQuery>
+#include <QMessageBox>
 frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
 {
     ui->setupUi(this);
@@ -10,7 +12,6 @@ frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
     this->initForm();
     this->initView();
 
-    on_btnSelect_clicked();
 }
 
 frmDbPage::~frmDbPage()
@@ -19,7 +20,7 @@ frmDbPage::~frmDbPage()
 }
 
 void frmDbPage::initBox(){
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(0);
     ui->dateStart->setDate(QDate::currentDate());
     ui->dateEnd->setDate(QDate::currentDate());
 }
@@ -79,25 +80,51 @@ void frmDbPage::initView(){
 
 void frmDbPage::on_btnSelect_clicked()
 {
-    if(ui->stackedWidget->currentIndex()==1)//时间查询
+    if(ui->stackedWidget->currentIndex()==0)//时间查询
     {
         QString startdate = ui->dateStart->date().toString("yyyy-MM-dd");
         QString enddate = ui->dateEnd->date().toString("yyyy-MM-dd");
+
+        QString sql = QString("where inroom_time >= '%1' and outroom_time <= DATE_ADD('%2',INTERVAL 1 day)").arg(startdate).arg(enddate);
+        qDebug()<<sql;
+        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
+        dbPage->setWhereSql(sql);
+        dbPage->setRecordsPerpage(20);
+        dbPage->select();
     }
-    else if(ui->stackedWidget->currentIndex()==0)//房型查询
+    else if(ui->stackedWidget->currentIndex()==1)//客户查询
     {
-
+        QString customer_name = ui->edit_customer->text();
+        QString sql = QString("where name = '%1'").arg(customer_name);
+        qDebug()<<sql;
+        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
+        dbPage->setWhereSql(sql);
+        dbPage->setRecordsPerpage(20);
+        dbPage->select();
     }
-}
+    else if(ui->stackedWidget->currentIndex()==2)//价格查询
+    {
+        QString price1 = ui->edit_price1->text();
+        QString price2 = ui->edit_price2->text();
 
-void frmDbPage::on_btn_time_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(1);
-}
+        QString sql = QString("where pay between '%1' and '%2'").arg(price1).arg(price2);
+        qDebug()<<sql;
+        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
+        dbPage->setWhereSql(sql);
+        dbPage->setRecordsPerpage(20);
+        dbPage->select();
+    }
+    else if(ui->stackedWidget->currentIndex()==3)//员工查询
+    {
+        QString staff_name = ui->edit_staff->text();
 
-void frmDbPage::on_btn_room_clicked()
-{
-    ui->stackedWidget->setCurrentIndex(0);
+        QString sql = QString("where operator = '%1'").arg(staff_name);
+        qDebug()<<sql;
+        dbPage->setOrderSql(QString("%1 %2").arg(countName).arg("desc"));
+        dbPage->setWhereSql(sql);
+        dbPage->setRecordsPerpage(20);
+        dbPage->select();
+    }
 }
 
 void frmDbPage::on_btnExcel_clicked()
@@ -148,20 +175,63 @@ void frmDbPage::on_btnExcel_clicked()
 
 }
 
-void frmDbPage::on_roomBox_activated(int index)
+void frmDbPage::on_btn_time_clicked()
 {
-    qDebug()<<index;
-    if(0!=index)
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void frmDbPage::on_btn_customer_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void frmDbPage::on_btn_price_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void frmDbPage::on_btn_staff_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void frmDbPage::on_btnDelete_clicked()
+{
+    QSqlQuery query(QSqlDatabase::database("hotel"));
+    query.exec("select user_type from user");
+    QString value = "";
+    while(query.next())
     {
-        ui->btn_bigroom->setAutoExclusive(false);
-        ui->btn_bigroom->setAutoExclusive(true);
-        ui->btn_oneroom->setAutoExclusive(false);
-        ui->btn_oneroom->setAutoExclusive(true);
-        ui->btn_tworoom->setAutoExclusive(false);
-        ui->btn_tworoom->setAutoExclusive(true);
-        ui->btn_exeroom->setAutoExclusive(false);
-        ui->btn_exeroom->setAutoExclusive(true);
-        ui->btn_delroom->setAutoExclusive(false);
-        ui->btn_delroom->setAutoExclusive(true);
+        value = query.value("user_type").toString();
+        qDebug()<<"user_type:"<<value;
+        //只需要一个user_type
+        break;
+    }
+    if(value == "管理员")
+    {
+        qDebug()<<"管理员删除订单";
+        QMessageBox::warning(this,"警告","根据相关法律法规，为保证客户入住记录不被删除修改，\n"
+                                       "请联系开发商获取授权！");
+    }
+    else if(value == "员工")
+    {
+        qDebug()<<"操作失败，当前用户为："<<value<<"，请申请权限！";
+        QMessageBox::information(NULL,"提示","您暂无此权限，请向管理员申请！",QMessageBox::Ok);
+    }
+    else if(value == "临时工")
+    {
+        qDebug()<<"操作失败，当前用户为："<<value<<"，请申请权限！";
+        QMessageBox::information(NULL,"提示","您暂无此权限，请向管理员申请！",QMessageBox::Ok);
+    }
+    else if(value == "")
+    {
+        qDebug()<<"查询失败！";
+        QMessageBox::information(NULL,"提示","您暂无此权限，请向管理员申请！",QMessageBox::Ok);
+
+    }
+    else{
+        qDebug()<<"操作失败，当前用户为："<<value;
+        QMessageBox::information(NULL,"提示","操作失败,当前用户为非法用户！",QMessageBox::Ok);
+
     }
 }

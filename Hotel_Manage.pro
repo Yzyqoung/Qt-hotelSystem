@@ -50,3 +50,6 @@ FORMS += \
     accountauthorization.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    images.qrc

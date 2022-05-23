@@ -42,9 +42,11 @@ private slots:
 private slots:
     void on_btnSelect_clicked();
     void on_btn_time_clicked();
-    void on_btn_room_clicked();
     void on_btnExcel_clicked();
-    void on_roomBox_activated(int index);
+    void on_btn_customer_clicked();
+    void on_btn_price_clicked();
+    void on_btn_staff_clicked();
+    void on_btnDelete_clicked();
 };
 
 #endif // FRMDBPAGE_H
