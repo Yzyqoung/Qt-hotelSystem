@@ -1,8 +1,8 @@
 #include "log.h"
-
+#include <QDebug>
 QFile *gFileLog = NULL;
 
-char *msgHead[]={
+char const *msgHead[]={
     "Debug   ",
     "Warning ",
     "Critical",
@@ -12,18 +12,18 @@ char *msgHead[]={
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
+    Q_UNUSED(context);
     QByteArray localMsg = msg.toLocal8Bit();
     QString current_date_time = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd");
 
     if(gFileLog){
         QTextStream tWrite(gFileLog);
-
-        QString msgText="%1 | 时间:%6 | %2:%3, %4 | 信息:%5\n";
-        msgText = msgText.arg(msgHead[type]).arg(context.file).arg(context.line).arg(context.function).arg(localMsg.constData()).arg(current_date_time);
+        QString msgText="%1 时间:%3     %2\n";
+        msgText = msgText.arg(msgHead[type]).arg(localMsg.constData()).arg(current_date_time);
         //gFileLog->write(msgText.toLocal8Bit(), msgText.length());
         tWrite << msgText;
     }else{
-        fprintf(stderr, "%s | 时间:%s | %s:%u, %s | 信息:%s\n", msgHead[type], current_date_time.toLocal8Bit().constData(), context.file, context.line, context.function, localMsg.constData());
+        fprintf(stderr, "%s 时间:%s     %s\n", msgHead[type], current_date_time.toLocal8Bit().constData(),localMsg.constData());
     }
 }
 
@@ -31,9 +31,10 @@ void logSysInit(QString filePath)
 {
     gFileLog = new QFile(filePath);
     if (!gFileLog->open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)){
+        qDebug()<<"logInit Initialization failure!";
         return;
     }
     //初始化自定义日志处理函数myMessageOutput
     qInstallMessageHandler(myMessageOutput);
-
+    qDebug()<<"logInit Initialization success!";
 }

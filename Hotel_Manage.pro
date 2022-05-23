@@ -28,19 +28,25 @@ SOURCES += \
         mainwindow.cpp \
     LOG_CONFIG/log.cpp \
     login.cpp \
-    homepage.cpp
+    dbpage.cpp \
+    frmdbpage.cpp \
+    accountauthorization.cpp \
+    saveloginuser.cpp
 
 HEADERS += \
         mainwindow.h \
     SQL_CONFIG/sql_connect.h \
     LOG_CONFIG/log.h \
     login.h \
-    homepage.h
+    dbpage.h \
+    frmdbpage.h \
+    accountauthorization.h \
+    saveloginuser.h
 
 FORMS += \
         mainwindow.ui \
     login.ui \
-    homepage.ui
+    frmdbpage.ui \
+    accountauthorization.ui
 
-RESOURCES += \
-    images.qrc
+DISTFILES +=

@@ -13,6 +13,7 @@
 #include <QSqlTableModel>
 #include "SQL_CONFIG/sql_connect.h"
 #include "mainwindow.h"
+#include "saveloginuser.h"
 
 namespace Ui {
 class Login;
@@ -27,7 +28,7 @@ public:
     ~Login();
 
     //保存当前的用户和密码
-    void WriteCurrentUser(QString tablename,QString username,QString userpwd );
+    void WriteCurrentUser(QString username,QString userpwd );
 
     //检查表是有内容
     int FindTableIsEmpty(QString tablename);
@@ -35,16 +36,13 @@ public:
     //删除表中内容
     void DeleteTableContent(QString tablename);
 
-    //初始化数据库
-    void initsql();
+    void saveLoginUser(QString user_num);
 
 protected:
     void mouseMoveEvent(QMouseEvent *e);//鼠标移动
     void mousePressEvent(QMouseEvent *e);//鼠标按下移动
 private slots:
     void on_btnLogin_clicked();
-
-    void on_toolButton_clicked();
 
     void on_btn_close_clicked();
 

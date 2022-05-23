@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>649</width>
+    <width>650</width>
     <height>450</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@ font-style:MingLiU-ExtB;
 }
 QLineEdit{
 color:#000000;
-background-color:#000000;
+background-color:#ffffff;
 font-size:16px;
 border-style:outset;
 border-radius:20px;
@@ -198,7 +198,7 @@ font-style:MingLiU-ExtB;
              <string>请输入密码</string>
             </property>
            </widget>
-           <widget class="QLineEdit" name="txtUserName">
+           <widget class="QLineEdit" name="txtUserNum">
             <property name="enabled">
              <bool>true</bool>
             </property>

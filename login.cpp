@@ -1,5 +1,8 @@
+/*登录界面*/
 #include "login.h"
 #include "ui_login.h"
+#include "saveloginuser.h"
+#include <QSqlRecord>
 #include <QPainter>
 #include <QMouseEvent>
 #include <QDialog>
@@ -21,26 +24,52 @@ Login::~Login()
 }
 
 /*
+ *函数功能：暂存当前登录用户的信息
+ *输入参数：
+ *说明：
+*/
+void Login::saveLoginUser(QString user_num)
+{
+    QSqlQuery query;
+    SaveLoginUser save;
+    query.prepare("select * from user where user_num = :user_num");
+    query.bindValue(":user_num",user_num);
+    query.exec();
+    QSqlRecord rec = query.record();
+    while(query.next())
+    {
+        int usernum = rec.indexOf("user_num");
+        int username = rec.indexOf("user_name");
+        int usertype = rec.indexOf("user_type");
+        QString value1 = query.value(usernum).toString();
+        QString value2 = query.value(username).toString();
+        QString value3 = query.value(usertype).toString();
+        save.setUserFormation(value1,value2,value3);
+    }
+}
+
+/*
  *函数功能：保存当前用户名和密码
- *输入参数：数据表名，用户名，用户密码 表名：user_name
+ *输入参数：数据表名，用户名，用户密码
  *说明：在插入时总会先判断，若有数值，进行删除在插入
 */
-void Login::WriteCurrentUser(QString tablename, QString username,QString userpwd)
+void Login::WriteCurrentUser(QString usernum,QString userpwd)
 {
+    qDebug()<<"方法使用成功";
     if(FindTableIsEmpty("currentuser") != 0)
     {
         //deldete table
         this->DeleteTableContent("currentuser");
         qDebug() <<"deldete table ok";
+        WriteCurrentUser(usernum,userpwd);
     }
     else
     {
         QSqlQuery query;
-        QString sql = "insert into "+tablename+" values(:UserName,:UserPwd)"; //添加信息数据库语句
-        qDebug() <<sql;
+        QString sql = "insert into currentuser(user_num,user_pwd) values(:user_num,:user_pwd)"; //添加信息数据库语句
         query.prepare(sql);
-        query.bindValue(":UserName",username);
-        query.bindValue(":UserPwd",userpwd);
+        query.bindValue(":user_num",usernum);
+        query.bindValue(":user_pwd",userpwd);
         query.setForwardOnly(true);
         query.exec();
         qDebug() <<"insert into table ok";
@@ -80,35 +109,11 @@ void Login::DeleteTableContent(QString tablename)
     query.exec(sql);
 }
 
-/*
- *数据库连接
-*/
-void Login::initsql()
-{
-    //数据库连接
-    db = QSqlDatabase::addDatabase("QMYSQL");   //那种类型的数据库
-    db.setHostName("127.0.0.1");    //本机地址
-    db.setPort(3306);      //端口号
-    db.setDatabaseName("hotel");    //那个数据库
-    db.setUserName("root");      //用户名
-    db.setPassword("123456");    //密码
-    db.open();
-    if(!db.open()) //如果数据库打开失败，会弹出一个警告窗口
-    {
-        QMessageBox::warning(this, "警告", "数据库打开失败!!");
-    }
-    else
-    {
-        return;
-         //QMessageBox::warning(this, "警告", "数据库开启成功!!");
-    }
-}
-
 void Login::on_btnLogin_clicked() // 登录按钮
 {
-    QString UserName = ui->txtUserName->text().trimmed();
+    QString UserNum = ui->txtUserNum->text().trimmed();
     QString UserPwd = ui->txtUserPwd->text().trimmed();
-    if(UserPwd.isEmpty()&&UserName.isEmpty())
+    if(UserPwd.isEmpty()&&UserNum.isEmpty())
     {
        QMessageBox::information(this,"提示","账号和密码不能为空");
     }
@@ -116,32 +121,26 @@ void Login::on_btnLogin_clicked() // 登录按钮
     {
         QSqlTableModel model;
         model.setTable("user");
-        model.setFilter(QObject::tr("user_name = '%1' and user_pwd ='%2'")
-                        .arg(UserName).arg(UserPwd));
+        model.setFilter(QObject::tr("user_num = '%1' and user_pwd ='%2'")
+                        .arg(UserNum).arg(UserPwd));
         model.select();
-        qDebug()<<model.select();
         if(model.rowCount() == 1)
         {
-//            Myapp::LastLoginter = ui->txtUserName->text();
-//            Myapp::CurrentUserName = Myapp::LastLoginter;
-//            Myapp::CurrentUserPwd = ui->txtUserPwd->text();
-//            Myapp::CurrentUserType = tr("管理员");
-//            Myapp::WriteConfig();           //写进配置文件
-//            myHelper::MyLoginBlog("logblog","登录","登录系统","管理员");     //写入系统日志
-//            qDebug() <<UserName<<""<<UserPwd;
-//            QDialog::accept();
+            WriteCurrentUser(UserNum,UserPwd);
+            saveLoginUser(UserNum);
             this->close();//关闭父页面
             MainWindow *m = new MainWindow();//定义子页面的一个类
             m->show();//界面跳转
         }
         else
         {
-            QMessageBox::information(this,"提示","密码错误请重新输入！");
+            QMessageBox::information(this,"提示","账号或密码错误请重新输入！");
             ui->txtUserPwd->clear();
             ui->txtUserPwd->setFocus();
         }
     }
 }
+
 
 void Login::on_btn_close_clicked()//关闭窗口按钮
 {
@@ -172,3 +171,5 @@ void Login::mouseMoveEvent(QMouseEvent *e)
     }
 
 }
+
+
