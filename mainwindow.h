@@ -8,6 +8,7 @@
 #include "customerinfo.h"
 #include "backupssql.h"
 #include "promanage.h"
+#include "accountauthorization.h"
 #include <QDateTime>
 #include <QTimer>
 
@@ -39,6 +40,8 @@ private slots:
 
     void on_btn_center_clicked();
 
+    void on_btn_register_clicked();
+
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
@@ -54,6 +57,7 @@ private:
     customerinfo * ctmfDP;
     backupssql * backsql;
     promanage * proManage;
+    AccountAuthorization *account;
 };
 
 #endif // MAINWINDOW_H

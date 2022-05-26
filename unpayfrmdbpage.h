@@ -46,7 +46,7 @@ private slots:
     void on_btn_price_clicked();
     void on_btn_staff_clicked();
     void on_btnDelete_clicked();
-    void on_btnBack_clicked();
+    void on_btnback_clicked();
 };
 
 #endif // UNPAYFRMDBPAGE_H

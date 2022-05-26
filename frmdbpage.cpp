@@ -10,6 +10,7 @@
 #include "frmdbpage.h"
 #include "ui_frmdbpage.h"
 #include "dbpage.h"
+#include "saveloginuser.h"
 #include <QDate>
 #include <QSqlQuery>
 #include <QMessageBox>
@@ -206,16 +207,7 @@ void frmDbPage::on_btn_staff_clicked()
 
 void frmDbPage::on_btnDelete_clicked()
 {
-    QSqlQuery query(QSqlDatabase::database("hotel"));
-    query.exec("select user_type from user");
-    QString value = "";
-    while(query.next())
-    {
-        value = query.value("user_type").toString();
-        qDebug()<<"user_type:"<<value;
-        //只需要一个user_type
-        break;
-    }
+    QString value = SaveLoginUser::user_type;
     if(value == "管理员")
     {
         qDebug()<<"管理员删除订单";

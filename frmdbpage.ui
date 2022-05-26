@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>1045</width>
     <height>600</height>
    </rect>
   </property>
@@ -324,10 +324,16 @@
       </property>
       <item>
        <widget class="QPushButton" name="btnSelect">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>80</width>
-          <height>0</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -337,6 +343,18 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnback">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="text">
          <string>重置</string>
         </property>
@@ -344,10 +362,16 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnPreVious">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>50</width>
-          <height>0</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -363,10 +387,16 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnNext">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>50</width>
-          <height>0</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -382,10 +412,16 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnFirst">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>50</width>
-          <height>0</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -401,10 +437,16 @@
       </item>
       <item>
        <widget class="QPushButton" name="btnLast">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>50</width>
-          <height>0</height>
+          <height>30</height>
          </size>
         </property>
         <property name="text">
@@ -419,11 +461,30 @@
        </widget>
       </item>
       <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QLabel" name="labPageTotal">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>25</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="frameShape">
@@ -442,10 +503,16 @@
       </item>
       <item>
        <widget class="QLabel" name="labRecordsTotal">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>25</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="frameShape">
@@ -464,10 +531,16 @@
       </item>
       <item>
        <widget class="QLabel" name="labPageCurrent">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>25</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="frameShape">
@@ -486,10 +559,16 @@
       </item>
       <item>
        <widget class="QLabel" name="labRecordsPerpage">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>25</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="frameShape">
@@ -508,10 +587,16 @@
       </item>
       <item>
        <widget class="QLabel" name="labSelectTime">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
-          <height>25</height>
+          <width>50</width>
+          <height>30</height>
          </size>
         </property>
         <property name="frameShape">
@@ -527,19 +612,6 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </widget>

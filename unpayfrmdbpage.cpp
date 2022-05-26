@@ -9,7 +9,7 @@
 *****************************************************************/
 #include "unpayfrmdbpage.h"
 #include "ui_unpayfrmdbpage.h"
-
+#include "saveloginuser.h"
 unpayfrmdbpage::unpayfrmdbpage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::unpayfrmdbpage)
@@ -205,16 +205,7 @@ void unpayfrmdbpage::on_btn_staff_clicked()
 
 void unpayfrmdbpage::on_btnDelete_clicked()
 {
-    QSqlQuery query(QSqlDatabase::database("hotel"));
-    query.exec("select user_type from user");
-    QString value = "";
-    while(query.next())
-    {
-        value = query.value("user_type").toString();
-        qDebug()<<"user_type:"<<value;
-        //只需要一个user_type
-        break;
-    }
+    QString value = SaveLoginUser::user_type;
     if(value == "管理员")
     {
         qDebug()<<"管理员删除订单";
@@ -245,7 +236,7 @@ void unpayfrmdbpage::on_btnDelete_clicked()
 }
 
 
-void unpayfrmdbpage::on_btnBack_clicked()
+void unpayfrmdbpage::on_btnback_clicked()
 {
     this->initView();
 }

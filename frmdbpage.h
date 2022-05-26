@@ -10,7 +10,6 @@
  *说明：Email:578706463@qq.com
 *****************************************************************/
 #include <QWidget>
-
 class DbPage;
 
 namespace Ui {

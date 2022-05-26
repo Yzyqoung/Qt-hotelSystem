@@ -37,13 +37,15 @@ void MainWindow::initwidget()
     ctmfDP = new customerinfo(this);
     backsql = new backupssql(this);
     proManage = new promanage(this);
+    account = new AccountAuthorization(this);
     //所有界面添加进入stackedWidget
     ui->stackedWidget->addWidget(fDP);              //Index=2
     ui->stackedWidget->addWidget(unpayfDP);         //Index=3
     ui->stackedWidget->addWidget(payfDP);           //Index=4
     ui->stackedWidget->addWidget(ctmfDP);           //Index=5
     ui->stackedWidget->addWidget(backsql);          //Index=6
-    ui->stackedWidget->addWidget(proManage);         //Index=7
+    ui->stackedWidget->addWidget(proManage);        //Index=7
+    ui->stackedWidget->addWidget(account);          //Index=8
     //设置stackedWidget界面对齐
     ui->stackedWidget->widget(2)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(3)->layout()->setContentsMargins(0,0,0,1);
@@ -51,6 +53,7 @@ void MainWindow::initwidget()
     ui->stackedWidget->widget(5)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(6)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(7)->layout()->setContentsMargins(0,0,0,1);
+    ui->stackedWidget->widget(8)->layout()->setContentsMargins(0,0,0,1);
 
 }
 
@@ -103,7 +106,10 @@ void MainWindow::on_btn_center_clicked()
     ui->stackedWidget->setCurrentIndex(7);
 }
 
-
+void MainWindow::on_btn_register_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(8);
+}
 
 
 
@@ -139,4 +145,6 @@ void MainWindow::showCurrentTime()
     ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间:yyyy年MM月dd日 dddd HH:mm:ss")));
     ui->label_SoftTime->setText(QString(tr("已运行:%1天%2时%3分%4秒")).arg(day).arg(hour).arg(minute).arg(second));
 }
+
+
 

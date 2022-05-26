@@ -1,10 +1,9 @@
 #ifndef ACCOUNTAUTHORIZATION_H
 #define ACCOUNTAUTHORIZATION_H
-
 #include <QWidget>
 #include <QSqlQuery>
 #include <QSqlTableModel>
-#include "mainwindow.h"
+#include <QDebug>
 namespace Ui {
 class AccountAuthorization;
 }

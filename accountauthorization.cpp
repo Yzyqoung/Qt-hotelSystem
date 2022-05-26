@@ -7,8 +7,6 @@ AccountAuthorization::AccountAuthorization(QWidget *parent) :
     ui(new Ui::AccountAuthorization)
 {
     ui->setupUi(this);
-    //去窗口边框
-    setWindowFlags(Qt::FramelessWindowHint | windowFlags());
 }
 
 AccountAuthorization::~AccountAuthorization()
