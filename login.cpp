@@ -28,7 +28,7 @@ Login::~Login()
 void Login::saveLoginUser(QString user_num)
 {
     QSqlQuery query;
-    //SaveLoginUser save;
+    SaveLoginUser save;
     query.prepare("select * from user where user_num = :user_num");
     query.bindValue(":user_num",user_num);
     query.exec();
@@ -111,9 +111,9 @@ void Login::on_btnLogin_clicked() // 登录按钮
 {
     QString UserNum = ui->txtUserNum->text().trimmed();
     QString UserPwd = ui->txtUserPwd->text().trimmed();
-    if(UserPwd.isEmpty()&&UserNum.isEmpty())
+    if(UserPwd.isEmpty()||UserNum.isEmpty())
     {
-       QMessageBox::information(this,"提示","账号和密码不能为空");
+       QMessageBox::information(this,"提示","账号或密码不能为空");
     }
     else
     {

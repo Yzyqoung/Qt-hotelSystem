@@ -26,22 +26,21 @@ void MainWindow::initwidget()
     payfDP = new payfrmdbpage(this);
     ctmfDP = new customerinfo(this);
     backsql = new backupssql(this);
+    proManage = new promanage(this);
     //所有界面添加进入stackedWidget
     ui->stackedWidget->addWidget(fDP);              //Index=2
     ui->stackedWidget->addWidget(unpayfDP);         //Index=3
     ui->stackedWidget->addWidget(payfDP);           //Index=4
     ui->stackedWidget->addWidget(ctmfDP);           //Index=5
     ui->stackedWidget->addWidget(backsql);          //Index=6
-
+    ui->stackedWidget->addWidget(proManage);         //Index=7
     //设置stackedWidget界面对齐
     ui->stackedWidget->widget(2)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(3)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(4)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(5)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(6)->layout()->setContentsMargins(0,0,0,1);
-
-
-
+    ui->stackedWidget->widget(7)->layout()->setContentsMargins(0,0,0,1);
 
 }
 
@@ -87,4 +86,9 @@ void MainWindow::setAllEnableFalse()
 {
     ui->toolBox->setEnabled(false);
     qDebug()<<"设置toolbox不可用";
+}
+
+void MainWindow::on_btn_center_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(7);
 }

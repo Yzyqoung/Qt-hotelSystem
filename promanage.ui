@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>promanage</class>
+ <widget class="QWidget" name="promanage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>971</width>
+    <height>605</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_9">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="font">
+          <font>
+           <family>楷体</family>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="title">
+          <string>房间状态态图</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="leftMargin">
+           <number>7</number>
+          </property>
+          <property name="topMargin">
+           <number>18</number>
+          </property>
+          <item>
+           <widget class="QTableView" name="tableMain">
+            <attribute name="verticalHeaderDefaultSectionSize">
+             <number>30</number>
+            </attribute>
+            <attribute name="verticalHeaderMinimumSectionSize">
+             <number>20</number>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="minimumSize">
+        <size>
+         <width>130</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>楷体</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="title">
+        <string>说明</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QCheckBox" name="checkBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBoxRoomStatus">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>OpenHandCursor</cursorShape>
+            </property>
+            <item>
+             <property name="text">
+              <string>不限房态</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBoxRoomfloor">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>OpenHandCursor</cursorShape>
+            </property>
+            <item>
+             <property name="text">
+              <string>所有楼层</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/1.png</normaloff>:/image/roomnum/1.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/2.png</normaloff>:/image/roomnum/2.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>3层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/3.png</normaloff>:/image/roomnum/3.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>4层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/4.png</normaloff>:/image/roomnum/4.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>5层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/5.png</normaloff>:/image/roomnum/5.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>6层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/6.png</normaloff>:/image/roomnum/6.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>7层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/7.png</normaloff>:/image/roomnum/7.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>8层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/8.png</normaloff>:/image/roomnum/8.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>9层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/9.png</normaloff>:/image/roomnum/9.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/layout.png</normaloff>:/image/roomnum/layout.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>11层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomnum/layout.png</normaloff>:/image/roomnum/layout.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>13层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>14层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>15层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>16层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>17层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>18层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>19层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>20层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>21层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>22层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>23层</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normalon>:/image/roomnum/layout.png</normalon>
+              </iconset>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBoxRoomType">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="cursor">
+             <cursorShape>OpenHandCursor</cursorShape>
+            </property>
+            <item>
+             <property name="text">
+              <string>所有房型</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>单人间</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomtype/signal.png</normaloff>:/image/roomtype/signal.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>双人间</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomtype/double.png</normaloff>:/image/roomtype/double.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>豪华套间</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomtype/luxury.png</normaloff>:/image/roomtype/luxury.png</iconset>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>总统套房</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/image/roomtype/president.png</normaloff>:/image/roomtype/president.png</iconset>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="labelRoomNo">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSelect">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>查询</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnback">
+          <property name="text">
+           <string>重置</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnPreVious">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>上一页</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnNext">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>下一页</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnFirst">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>第一页</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnLast">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>末一页</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>18</width>
+            <height>18</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labPageTotal">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labRecordsTotal">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labPageCurrent">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labRecordsPerpage">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="labSelectTime">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>25</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

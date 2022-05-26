@@ -34,7 +34,8 @@ SOURCES += \
         unpayfrmdbpage.cpp \
         payfrmdbpage.cpp \
         customerinfo.cpp \
-        backupssql.cpp
+        backupssql.cpp \
+        promanage.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,7 +49,8 @@ HEADERS += \
         payfrmdbpage.h \
         saveloginuser.h \
         customerinfo.h \
-        backupssql.h
+        backupssql.h \
+        promanage.h
 
 FORMS += \
         mainwindow.ui \
@@ -58,7 +60,8 @@ FORMS += \
         accountauthorization.ui \
         payfrmdbpage.ui \
         customerinfo.ui \
-        backupssql.ui
+        backupssql.ui \
+        promanage.ui
 
 DISTFILES +=
 

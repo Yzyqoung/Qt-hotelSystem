@@ -7,6 +7,7 @@
 #include "payfrmdbpage.h"
 #include "customerinfo.h"
 #include "backupssql.h"
+#include "promanage.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +34,8 @@ private slots:
 
     void on_btn_copy_clicked();
 
+    void on_btn_center_clicked();
+
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
@@ -43,6 +46,7 @@ private:
     payfrmdbpage *payfDP;
     customerinfo * ctmfDP;
     backupssql * backsql;
+    promanage * proManage;
 };
 
 #endif // MAINWINDOW_H

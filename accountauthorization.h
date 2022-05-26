@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QSqlQuery>
 #include <QSqlTableModel>
-#include "SQL_CONFIG/sql_connect.h"
 #include "mainwindow.h"
 namespace Ui {
 class AccountAuthorization;
