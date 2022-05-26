@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "login.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    showFullScreen();//直接全屏展示
     initwidget();
 }
 
@@ -19,6 +21,14 @@ void MainWindow::initwidget()
     //窗体边框隐藏
     this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint | Qt::WindowMinMaxButtonsHint);
     this->setMinimumSize(1000,600);
+
+    ui->label_CurrentUser->setText("当前用户: " + SaveLoginUser::user_name + " 【"+ SaveLoginUser::user_type + "】");
+    ui->label_CompanyName->setText("公司: 惠州学院-计算机与工程学院");
+    ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间: yyyy年MM月dd日 dddd HH:mm:ss ")));
+
+    timer = new QTimer();
+    connect(timer,SIGNAL(timeout()),this,SLOT(showCurrentTime()));
+    timer->start(1000);
 
     //所有界面实例化
     fDP = new frmDbPage(this);
@@ -92,3 +102,41 @@ void MainWindow::on_btn_center_clicked()
 {
     ui->stackedWidget->setCurrentIndex(7);
 }
+
+
+
+
+
+int day = 0;
+int hour = 0;
+int minute = 0;
+int second = 0;
+/*
+ *函数功能：显示系统时间
+ *输入参数：无
+ *输出参数：无
+ *返回值：无
+ *说明：显示时间的槽函数，用来显示当前系统的时间和软件运行的时间
+*/
+void MainWindow::showCurrentTime()
+{
+    second++;
+    if(second == 60)
+    {
+        minute++;
+        second = 0;
+    }
+    if(minute == 60)
+    {
+        hour++;
+        minute = 0;
+    }
+    if(hour == 24)
+    {
+        day++;
+        hour = 0;
+    }
+    ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间:yyyy年MM月dd日 dddd HH:mm:ss")));
+    ui->label_SoftTime->setText(QString(tr("已运行:%1天%2时%3分%4秒")).arg(day).arg(hour).arg(minute).arg(second));
+}
+

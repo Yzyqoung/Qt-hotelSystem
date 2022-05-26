@@ -10,15 +10,10 @@ public:
 
     void setUserFormation(QString user_num,QString user_name,QString user_type);
 
-    QString getUserNum();
-
-    QString getUserName();
-
-    QString getUserType();
 public:
-    QString user_num;
-    QString user_name;
-    QString user_type;
+    static QString user_num;
+    static QString user_name;
+    static QString user_type;
 };
 
 #endif // SAVELOGINUSER_H

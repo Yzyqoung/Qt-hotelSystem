@@ -37,6 +37,7 @@ public:
 
     void saveLoginUser(QString user_num);
 
+    SaveLoginUser save;
 protected:
     void mouseMoveEvent(QMouseEvent *e);//鼠标移动
     void mousePressEvent(QMouseEvent *e);//鼠标按下移动

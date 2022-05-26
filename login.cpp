@@ -13,6 +13,9 @@ Login::Login(QWidget *parent) :
     //去窗口边框
     setWindowFlags(Qt::FramelessWindowHint | windowFlags());
 
+    ui->txtUserNum->setAttribute(Qt::WA_InputMethodEnabled,false);//设置账户框输入时，输入法自动转化为英文
+    ui->txtUserPwd->setAttribute(Qt::WA_InputMethodEnabled,false);//设置密码框输入时，输入法自动转化为英文
+
 }
 
 Login::~Login()
@@ -28,7 +31,6 @@ Login::~Login()
 void Login::saveLoginUser(QString user_num)
 {
     QSqlQuery query;
-    SaveLoginUser save;
     query.prepare("select * from user where user_num = :user_num");
     query.bindValue(":user_num",user_num);
     query.exec();
@@ -41,7 +43,6 @@ void Login::saveLoginUser(QString user_num)
         QString value1 = query.value(usernum).toString();
         QString value2 = query.value(username).toString();
         QString value3 = query.value(usertype).toString();
-        SaveLoginUser save;
         save.setUserFormation(value1,value2,value3);
     }
 }
@@ -58,7 +59,7 @@ void Login::WriteCurrentUser(QString usernum,QString userpwd)
     {
         //deldete table
         this->DeleteTableContent("currentuser");
-        qDebug() <<"deldete table ok";
+        qDebug() <<"delete table ok";
         WriteCurrentUser(usernum,userpwd);
     }
     else

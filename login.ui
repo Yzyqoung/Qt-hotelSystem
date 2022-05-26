@@ -166,6 +166,9 @@ font-style:MingLiU-ExtB;
               <height>20</height>
              </size>
             </property>
+            <property name="shortcut">
+             <string>Return</string>
+            </property>
            </widget>
            <widget class="QLineEdit" name="txtUserPwd">
             <property name="geometry">
@@ -217,6 +220,9 @@ font-style:MingLiU-ExtB;
             <property name="toolTip">
              <string>请输入账号</string>
             </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="inputMethodHints">
              <set>Qt::ImhNone</set>
             </property>
@@ -234,6 +240,13 @@ font-style:MingLiU-ExtB;
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>txtUserNum</tabstop>
+  <tabstop>txtUserPwd</tabstop>
+  <tabstop>btnLogin</tabstop>
+  <tabstop>btn_min</tabstop>
+  <tabstop>btn_close</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

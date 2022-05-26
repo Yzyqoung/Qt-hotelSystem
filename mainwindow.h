@@ -8,6 +8,8 @@
 #include "customerinfo.h"
 #include "backupssql.h"
 #include "promanage.h"
+#include <QDateTime>
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +23,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void initwidget();
+
 private slots:
     void on_btn_allorder_clicked();
 
@@ -39,8 +42,12 @@ private slots:
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
+    void showCurrentTime();
 private:
     Ui::MainWindow *ui;
+
+    QTimer *timer;
+
     frmDbPage *fDP;
     unpayfrmdbpage *unpayfDP;
     payfrmdbpage *payfDP;
