@@ -2,6 +2,7 @@
 #include "./SQL_CONFIG/sql_connect.h"
 #include "./LOG_CONFIG/log.h"
 #include "login.h"
+#include "changepassword.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -14,7 +15,9 @@ int main(int argc, char *argv[])
     //数据库初始化
     sql_init();
 
-    Login login;
-    login.show();
+//    Login login;
+//    login.show();
+    ChangePassword cpd;
+    cpd.show();
     return a.exec();
 }
