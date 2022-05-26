@@ -35,7 +35,8 @@ SOURCES += \
         payfrmdbpage.cpp \
         customerinfo.cpp \
         backupssql.cpp \
-        promanage.cpp
+        promanage.cpp \
+    changepassword.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
         saveloginuser.h \
         customerinfo.h \
         backupssql.h \
-        promanage.h
+        promanage.h \
+    changepassword.h
 
 FORMS += \
         mainwindow.ui \
@@ -61,7 +63,8 @@ FORMS += \
         payfrmdbpage.ui \
         customerinfo.ui \
         backupssql.ui \
-        promanage.ui
+        promanage.ui \
+    changepassword.ui
 
 DISTFILES +=
 
