@@ -1,9 +1,6 @@
 /*登录界面*/
 #include "login.h"
 #include "ui_login.h"
-#include <QSqlRecord>
-#include <QPainter>
-#include <QMouseEvent>
 
 Login::Login(QWidget *parent) :
     QWidget(parent),
@@ -127,9 +124,9 @@ void Login::on_btnLogin_clicked() // 登录按钮
         {
             WriteCurrentUser(UserNum,UserPwd);
             saveLoginUser(UserNum);
-            this->close();//关闭父页面
             MainWindow *m = new MainWindow();//定义子页面的一个类
             m->show();//界面跳转
+            this->close();//关闭父页面        
         }
         else
         {

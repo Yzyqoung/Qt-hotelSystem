@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 #include "frmdbpage.h"
 #include "unpayfrmdbpage.h"
 #include "payfrmdbpage.h"
@@ -9,8 +10,15 @@
 #include "backupssql.h"
 #include "promanage.h"
 #include "accountauthorization.h"
+#include "changepassword.h"
+
+
 #include <QDateTime>
 #include <QTimer>
+#include <QSqlRecord>
+#include <QPainter>
+#include <QMouseEvent>
+
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +50,8 @@ private slots:
 
     void on_btn_register_clicked();
 
+    void on_btn_changepwd_clicked();
+
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
@@ -51,13 +61,14 @@ private:
 
     QTimer *timer;
 
-    frmDbPage *fDP;
-    unpayfrmdbpage *unpayfDP;
-    payfrmdbpage *payfDP;
+    frmDbPage * fDP;
+    unpayfrmdbpage * unpayfDP;
+    payfrmdbpage * payfDP;
     customerinfo * ctmfDP;
     backupssql * backsql;
     promanage * proManage;
-    AccountAuthorization *account;
+    AccountAuthorization * account;
+    ChangePassword * changepwd;
 };
 
 #endif // MAINWINDOW_H

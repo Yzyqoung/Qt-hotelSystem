@@ -9,7 +9,7 @@
 *****************************************************************/
 #include "payfrmdbpage.h"
 #include "ui_payfrmdbpage.h"
-#include "saveloginuser.h"
+
 payfrmdbpage::payfrmdbpage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::payfrmdbpage)

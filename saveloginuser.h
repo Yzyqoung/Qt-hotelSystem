@@ -1,8 +1,8 @@
 #ifndef SAVELOGINUSER_H
 #define SAVELOGINUSER_H
 
-#include "mainwindow.h"
 #include <QString>
+
 class SaveLoginUser
 {
 public:

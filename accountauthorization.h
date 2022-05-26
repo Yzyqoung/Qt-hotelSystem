@@ -1,5 +1,7 @@
 #ifndef ACCOUNTAUTHORIZATION_H
 #define ACCOUNTAUTHORIZATION_H
+#include <QtGui>
+#include <QtSql>
 #include <QWidget>
 #include <QSqlQuery>
 #include <QSqlTableModel>

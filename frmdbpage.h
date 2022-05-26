@@ -10,6 +10,12 @@
  *说明：Email:578706463@qq.com
 *****************************************************************/
 #include <QWidget>
+#include <QDate>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include "dbpage.h"
+#include "saveloginuser.h"
+
 class DbPage;
 
 namespace Ui {

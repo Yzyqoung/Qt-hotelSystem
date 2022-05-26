@@ -12,6 +12,8 @@
 
 #include <QWidget>
 #include <dbpage.h>
+#include "saveloginuser.h"
+
 namespace Ui {
 class payfrmdbpage;
 }

@@ -9,11 +9,7 @@
 *****************************************************************/
 #include "frmdbpage.h"
 #include "ui_frmdbpage.h"
-#include "dbpage.h"
-#include "saveloginuser.h"
-#include <QDate>
-#include <QSqlQuery>
-#include <QMessageBox>
+
 frmDbPage::frmDbPage(QWidget *parent) : QWidget(parent), ui(new Ui::frmDbPage)
 {
     ui->setupUi(this);

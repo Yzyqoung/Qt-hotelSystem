@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "login.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,6 +37,7 @@ void MainWindow::initwidget()
     backsql = new backupssql(this);
     proManage = new promanage(this);
     account = new AccountAuthorization(this);
+    changepwd = new ChangePassword(this);
     //所有界面添加进入stackedWidget
     ui->stackedWidget->addWidget(fDP);              //Index=2
     ui->stackedWidget->addWidget(unpayfDP);         //Index=3
@@ -46,6 +46,8 @@ void MainWindow::initwidget()
     ui->stackedWidget->addWidget(backsql);          //Index=6
     ui->stackedWidget->addWidget(proManage);        //Index=7
     ui->stackedWidget->addWidget(account);          //Index=8
+    ui->stackedWidget->addWidget(changepwd);        //Index=8
+
     //设置stackedWidget界面对齐
     ui->stackedWidget->widget(2)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(3)->layout()->setContentsMargins(0,0,0,1);
@@ -54,6 +56,7 @@ void MainWindow::initwidget()
     ui->stackedWidget->widget(6)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(7)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(8)->layout()->setContentsMargins(0,0,0,1);
+    ui->stackedWidget->widget(9)->layout()->setContentsMargins(0,0,0,1);
 
 }
 
@@ -111,6 +114,10 @@ void MainWindow::on_btn_register_clicked()
     ui->stackedWidget->setCurrentIndex(8);
 }
 
+void MainWindow::on_btn_changepwd_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(9);
+}
 
 
 int day = 0;
@@ -145,6 +152,7 @@ void MainWindow::showCurrentTime()
     ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间:yyyy年MM月dd日 dddd HH:mm:ss")));
     ui->label_SoftTime->setText(QString(tr("已运行:%1天%2时%3分%4秒")).arg(day).arg(hour).arg(minute).arg(second));
 }
+
 
 
 

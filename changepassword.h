@@ -6,8 +6,10 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
+#include <QtGui>
+#include <QtSql>
 #include <QDebug>
-#include "mainwindow.h"
+
 namespace Ui {
 class ChangePassword;
 }
