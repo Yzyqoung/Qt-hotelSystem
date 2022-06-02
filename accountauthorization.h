@@ -20,7 +20,7 @@ public:
 
 private slots:
     void on_btnCancel_clicked();
-
+    void updateview();
     void on_btnOk_clicked();
 
 private:

@@ -142,6 +142,9 @@
             <property name="cursor">
              <cursorShape>OpenHandCursor</cursorShape>
             </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
             <item>
              <property name="text">
               <string>所有楼层</string>

@@ -26,6 +26,14 @@ void AccountAuthorization::on_btnCancel_clicked()
     ui->UserPwd->clear();
     ui->UserRePwd->clear();
 }
+
+void AccountAuthorization::updateview(){
+    ui->UserName->clear();
+    ui->UserNum->clear();
+    ui->UserPwd->clear();
+    ui->UserRePwd->clear();
+}
+
 /*
  *函数功能：注册按钮
  *输入参数：无
@@ -66,9 +74,12 @@ void AccountAuthorization::on_btnOk_clicked()
             query.exec();
             if(query.prepare(sql)){
                 qDebug() <<"insert into table ok";
+                QMessageBox::information(this,"提示","注册成功");
+                updateview();
             }
             else{
                 qDebug()<<"insert into table false";
+                QMessageBox::information(this,"提示","注册失败");
             }
         }
     }

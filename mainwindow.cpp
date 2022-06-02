@@ -46,7 +46,7 @@ void MainWindow::initwidget()
     ui->stackedWidget->addWidget(backsql);          //Index=6
     ui->stackedWidget->addWidget(proManage);        //Index=7
     ui->stackedWidget->addWidget(account);          //Index=8
-    ui->stackedWidget->addWidget(changepwd);        //Index=8
+    ui->stackedWidget->addWidget(changepwd);        //Index=9
 
     //设置stackedWidget界面对齐
     ui->stackedWidget->widget(2)->layout()->setContentsMargins(0,0,0,1);
@@ -111,7 +111,12 @@ void MainWindow::on_btn_center_clicked()
 
 void MainWindow::on_btn_register_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(8);
+    if(SaveLoginUser::user_type!="管理员")
+    {
+        QMessageBox::warning(this,"警告","非管理员无法使用该功能");
+    }else{
+        ui->stackedWidget->setCurrentIndex(8);
+    }
 }
 
 void MainWindow::on_btn_changepwd_clicked()

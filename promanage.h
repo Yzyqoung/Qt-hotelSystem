@@ -29,7 +29,8 @@ private slots:
     void initForm();//表格初始化
     void initView();//数据初始化
     void initcombox();//combox初始化
-    QString findchoice();
+    void findchoice();
+    QString setwheresql(QString choice);
     void on_btnSelect_clicked();
 
 private:

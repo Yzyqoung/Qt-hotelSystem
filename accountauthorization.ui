@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
-    <height>636</height>
+    <width>1748</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -55,7 +55,7 @@
         </font>
        </property>
        <property name="text">
-        <string>【系统设置】--数据备份</string>
+        <string>【个人中心】--账户注册</string>
        </property>
       </widget>
      </item>
@@ -95,7 +95,7 @@
      <item row="1" column="0" colspan="2">
       <widget class="QFrame" name="frame_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -368,7 +368,7 @@
               </item>
               <item>
                <property name="text">
-                <string>店长</string>
+                <string>管理员</string>
                </property>
               </item>
               <item>
@@ -393,7 +393,7 @@
            </font>
           </property>
           <property name="text">
-           <string>账号授权</string>
+           <string>账号注册</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
