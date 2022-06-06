@@ -235,5 +235,5 @@ void frmDbPage::on_btnDelete_clicked()
 
 void frmDbPage::on_btnback_clicked()
 {
-        this->initView();
+    this->initView();
 }
