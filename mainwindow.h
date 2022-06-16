@@ -11,7 +11,7 @@
 #include "promanage.h"
 #include "accountauthorization.h"
 #include "changepassword.h"
-
+#include "backroom.h"
 
 #include <QDateTime>
 #include <QTimer>
@@ -52,6 +52,8 @@ private slots:
 
     void on_btn_changepwd_clicked();
 
+    void on_btn_checkout_clicked();
+
 public slots:
     void setAllEnableTrue();
     void setAllEnableFalse();
@@ -69,6 +71,7 @@ private:
     promanage * proManage;
     AccountAuthorization * account;
     ChangePassword * changepwd;
+    backroom * backfDP;
 };
 
 #endif // MAINWINDOW_H

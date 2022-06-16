@@ -38,6 +38,7 @@ void MainWindow::initwidget()
     proManage = new promanage(this);
     account = new AccountAuthorization(this);
     changepwd = new ChangePassword(this);
+    backfDP = new backroom(this);
     //所有界面添加进入stackedWidget
     ui->stackedWidget->addWidget(fDP);              //Index=2
     ui->stackedWidget->addWidget(unpayfDP);         //Index=3
@@ -47,6 +48,7 @@ void MainWindow::initwidget()
     ui->stackedWidget->addWidget(proManage);        //Index=7
     ui->stackedWidget->addWidget(account);          //Index=8
     ui->stackedWidget->addWidget(changepwd);        //Index=9
+    ui->stackedWidget->addWidget(backfDP);          //Index=10
 
     //设置stackedWidget界面对齐
     ui->stackedWidget->widget(2)->layout()->setContentsMargins(0,0,0,1);
@@ -57,7 +59,42 @@ void MainWindow::initwidget()
     ui->stackedWidget->widget(7)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(8)->layout()->setContentsMargins(0,0,0,1);
     ui->stackedWidget->widget(9)->layout()->setContentsMargins(0,0,0,1);
+    ui->stackedWidget->widget(10)->layout()->setContentsMargins(0,0,0,1);
 
+}
+
+
+int day = 0;
+int hour = 0;
+int minute = 0;
+int second = 0;
+/*
+ *函数功能：显示系统时间
+ *输入参数：无
+ *输出参数：无
+ *返回值：无
+ *说明：显示时间的槽函数，用来显示当前系统的时间和软件运行的时间
+*/
+void MainWindow::showCurrentTime()
+{
+    second++;
+    if(second == 60)
+    {
+        minute++;
+        second = 0;
+    }
+    if(minute == 60)
+    {
+        hour++;
+        minute = 0;
+    }
+    if(hour == 24)
+    {
+        day++;
+        hour = 0;
+    }
+    ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间:yyyy年MM月dd日 dddd HH:mm:ss")));
+    ui->label_SoftTime->setText(QString(tr("已运行:%1天%2时%3分%4秒")).arg(day).arg(hour).arg(minute).arg(second));
 }
 
 void MainWindow::on_btnMenu_Close_clicked()
@@ -124,40 +161,7 @@ void MainWindow::on_btn_changepwd_clicked()
     ui->stackedWidget->setCurrentIndex(9);
 }
 
-
-int day = 0;
-int hour = 0;
-int minute = 0;
-int second = 0;
-/*
- *函数功能：显示系统时间
- *输入参数：无
- *输出参数：无
- *返回值：无
- *说明：显示时间的槽函数，用来显示当前系统的时间和软件运行的时间
-*/
-void MainWindow::showCurrentTime()
+void MainWindow::on_btn_checkout_clicked()
 {
-    second++;
-    if(second == 60)
-    {
-        minute++;
-        second = 0;
-    }
-    if(minute == 60)
-    {
-        hour++;
-        minute = 0;
-    }
-    if(hour == 24)
-    {
-        day++;
-        hour = 0;
-    }
-    ui->label_CurrentTime->setText(QDateTime::currentDateTime().toString(tr("当前时间:yyyy年MM月dd日 dddd HH:mm:ss")));
-    ui->label_SoftTime->setText(QString(tr("已运行:%1天%2时%3分%4秒")).arg(day).arg(hour).arg(minute).arg(second));
+    ui->stackedWidget->setCurrentIndex(10);
 }
-
-
-
-

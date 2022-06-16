@@ -36,7 +36,8 @@ SOURCES += \
         customerinfo.cpp \
         backupssql.cpp \
         promanage.cpp \
-    changepassword.cpp
+    changepassword.cpp \
+    backroom.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -52,7 +53,8 @@ HEADERS += \
         customerinfo.h \
         backupssql.h \
         promanage.h \
-    changepassword.h
+    changepassword.h \
+    backroom.h
 
 FORMS += \
         mainwindow.ui \
@@ -64,7 +66,8 @@ FORMS += \
         customerinfo.ui \
         backupssql.ui \
         promanage.ui \
-    changepassword.ui
+    changepassword.ui \
+    backroom.ui
 
 DISTFILES +=
 
